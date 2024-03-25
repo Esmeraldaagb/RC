@@ -1,0 +1,159 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator json {
+  provider = "zod-prisma"
+  modelSuffix = "ModelSchema"
+  imports     = "./zod/schemas"
+}
+
+generator zod {
+  provider    = "zod-prisma"
+  modelSuffix = "ModelSchema"
+  imports     = "./zod/schemas"
+}
+
+model User {
+    id        Int   @id @unique @default(autoincrement()) 
+    email     String   @unique
+    first_name   String?
+    last_name   String?
+    display_name   String?
+    user_picture String?
+    device_token String?
+    firebase_token String?
+    phone_number String?
+    country String?
+    company_identifier_number String?
+    company_name String?
+    address_line1 String?
+    address_line2 String?
+    city String?
+    region String?
+    roles    String @default("user") @db.VarChar(100)
+    createdAt       DateTime @default(now()) @db.Timestamptz(6)
+    updatedAt       DateTime @updatedAt @db.Timestamptz(6)
+    packages Package[]
+    logs LogsActivity[]
+}
+
+
+model Package {
+  id Int @id @default(autoincrement())
+  tracking_number String @unique
+  origin String
+  destination String
+  product_type Int
+  new_rate Float?
+  origin_arrival_date DateTime?
+  destination_arrival_date DateTime?
+  withdrawal_date DateTime?
+  material String?
+  content String
+  dimension String?
+  quantity String?
+  volume String?
+  capacity String?
+  model String?
+  brand String?
+  total_value Float
+  warehouse String
+  weight Float?
+  notes String?
+  package_image String
+  nb_pkgs Int
+  isTracked Boolean?
+  csv_upload_date DateTime?
+  status String?
+  date DateTime @default(now())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  type_product TypeProduct @relation(fields: [product_type], references: [id])
+  invoice Invoice[]
+}
+
+ model Expedition {
+  id Int @id @default(autoincrement())
+  flight_number String @unique
+  amount Float
+  weight String
+  arrival_estimation DateTime
+  date DateTime @default(now())
+}
+
+model Expense {
+  id Int @id @default(autoincrement())
+  name String
+  amount Float
+  payment_type_id Int
+  payment_type PaymentMethod @relation(fields: [payment_type_id], references: [id])
+}
+
+model Invoice {
+  id Int @id @default(autoincrement())
+  amount Float
+  tax Float?
+  date DateTime
+  package Package[]
+}
+
+model Payment {
+  id Int @id @default(autoincrement())
+  payment_type_id Int
+  amount_paid Float
+  payment_type PaymentMethod @relation(fields: [payment_type_id], references: [id])
+  isFullPaid Boolean
+}
+
+model PaymentMethod {
+  id Int @id @default(autoincrement())
+  name String
+  expense Expense[]
+  payment Payment[]
+}
+
+model TypeProduct {
+  id Int @id @default(autoincrement())
+  name String
+  package Package[]
+}
+
+model Rate {
+  id Int @id @default(autoincrement())
+  origin String
+  destination String
+  rate Float
+  description String
+  mode String
+}
+
+model Setting {
+  id Int @id @default(autoincrement())
+  key String
+  value String
+  meta String
+}
+
+model LogsActivity {
+  id Int @id @default(autoincrement())
+  action String
+  data String
+  user_id Int
+  entity_name String
+  entity_id String
+  date DateTime
+  user User @relation(fields: [user_id], references: [id])
+}
+
+
+enum Role {
+  user
+  admin
+  superadmin
+}

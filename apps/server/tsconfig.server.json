@@ -1,0 +1,10 @@
+{
+  "extends": "@cargo54/tsconfig/base.json",
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules/**/*", "dist"],
+  "compilerOptions": {
+    "rootDirs": ["./", "./src"],
+    "outDir": "./dist",
+    "noEmit": false
+  }
+}

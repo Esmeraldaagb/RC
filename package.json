@@ -1,0 +1,70 @@
+{
+  "name": "orion-cargo54",
+  "private": true,
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "build": "turbo build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "db:push": "cd ./apps/server && pnpm db:push",
+    "db:generate": "cd ./apps/server && pnpm db:generate",
+    "db:studio": "pnpm -F db studio",
+    "dev": "turbo dev --parallel",
+    "start:docker": "pnpm start:docker:db && pnpm start",
+    "start:docker:db": "cd ./apps/server && pnpm db:migrate:apply && pnpm db:migrate:script",
+    "dev:web": "turbo run dev --filter=web --filter=api --filter=storybook",
+    "dev:api": "turbo run dev --filter=api",
+    "dev:mobile": "turbo run dev --filter=mobile --filter=api",
+    "dev:mobile:only": "turbo run dev --filter=mobile",
+    "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
+    "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+<<<<<<< HEAD
+    "@cargo54/prettier-config": "workspace:^",
+    "@turbo/gen": "^1.12.4",
+    "prettier": "^3.2.5",
+    "turbo": "^1.12.4",
+=======
+    "@cargo54/prettier-config": "workspace:^0.1.0",
+    "@turbo/gen": "^1.11.3",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3",
+>>>>>>> 9d596cad6c2d747a1ecb33ecc7a2a038fa3ec101
+    "typescript": "^5.3.3"
+  },
+  "prettier": "@cargo54/prettier-config",
+  "pnpm": {
+    "overrides": {
+      "@auth/core": "0.20.0"
+    }
+  },
+  "dependencies": {
+<<<<<<< HEAD
+    "@react-native-picker/picker": "^2.6.1",
+    "@react-native/assets-registry": "^0.74.0",
+    "@react-navigation/bottom-tabs": "^6.5.14",
+    "@react-navigation/native": "^6.1.12",
+    "@react-navigation/native-stack": "^6.9.20",
+    "@react-navigation/stack": "^6.3.23",
+    "react-native-dropdown-picker": "^5.4.6",
+    "react-native-element-dropdown": "^2.10.1",
+    "react-native-elements": "^3.4.3",
+    "react-native-modal-dropdown": "^1.0.2",
+    "react-native-paper": "^5.12.3",
+    "react-native-reanimated": "^3.7.1",
+    "react-native-select-dropdown": "^3.4.0",
+    "react-native-simple-timeline": "^0.1.4",
+    "react-native-tab-view": "^3.5.2",
+    "react-native-timeline-flatlist": "^0.8.0"
+=======
+    "react-native-tab-view": "^3.5.2"
+>>>>>>> 9d596cad6c2d747a1ecb33ecc7a2a038fa3ec101
+  }
+}

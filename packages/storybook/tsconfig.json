@@ -1,0 +1,12 @@
+{
+  "extends": "@cargo54/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  "include": ["src", "src/env.js"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,17 @@
+{
+    "name": "@cargo54/ds-foundation",
+    "version": "0.1.0",
+    "private": true,
+
+    "scripts": {
+        "build-tokens": "style-dictionary build --config sd.config.js",
+        "build": "yarn build-tokens && tsc",
+        "build-tsc": "tsc --skipLibCheck",
+        "tsc-ve": "tsc --version"
+    },
+    "devDependencies": {
+        "style-dictionary": "^3.9.2",
+        "typescript": "^5.3.3"
+    }
+
+}

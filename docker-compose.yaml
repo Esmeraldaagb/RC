@@ -1,0 +1,34 @@
+version: "3"
+services:
+  cargo54-api:
+    build:
+      context: ./ # Use the monorepo root as the build context
+      dockerfile: ./containers/api/Dockerfile
+    image: cargo54/api
+    ports:
+      - "3030:3030"
+    environment:
+      DATABASE_URL: postgresql://cargo54:cargo54@postgres:5432/cargo54
+      ALLOW_REGISTER: "false"
+      ALLOW_OPENAPI: "true"
+    depends_on:
+      - postgres
+    restart: always
+  postgres:
+    image: postgres:15.4-alpine
+    environment:
+      POSTGRES_DB: cargo54-db
+      POSTGRES_USER: cargo54
+      POSTGRES_PASSWORD: cargo54
+    ports:
+      - "5432:5432"
+    volumes:
+      - cargo54-db-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  cargo54-db-data:

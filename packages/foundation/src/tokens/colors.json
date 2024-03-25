@@ -1,0 +1,106 @@
+{
+
+    "colors": {
+        "primary": {
+            "light": "#f5e6e6",
+            "light-hover": "#f0d9d9",
+            "light-active": "#dfb0b0",
+            "normal": "#980000",
+            "normal-hover": "#890000",
+            "normal-active": "#7a0000",
+            "dark": "#720000",
+            "dark-hover": "#5b0000",
+            "dark-active": "#440000",
+            "darker": "#350000"
+        },
+        "neutral": {
+            "light": "#e4e4e4",
+            "light-hover": "#dfdfdf",
+            "light-active": "#d9d9d9",
+            "normal": "#c4c4c4",
+            "normal-hover": "#a7a7a7",
+            "normal-active": "#8f8f8f",
+            "dark": "#454545",
+            "dark-hover": "#313131",
+            "dark-active": "#161616"
+        },
+        "green": {
+            "900": {
+                "value": "#007F00"
+            },
+            "800": {
+                "value": "#008F00"
+            },
+            "700": {
+                "value": "#009F00"
+            },
+            "600": {
+                "value": "#00AF00"
+            },
+            "500": {
+                "value": "#00BF00"
+            },
+            "400": {
+                "value": "#00CF00"
+            },
+            "300": {
+                "value": "#00DF00"
+            },
+            "200": {
+                "value": "#00EF00"
+            },
+            "100": {
+                "value": "#00FF00"
+            },
+            "base": {
+                "value": "#007F00"
+            }
+        },
+        "blue": {
+            "base": {
+                "value": "#0066FF"
+            },
+            "light": {
+                "value": "#0077FF"
+            },
+            "dark": {
+                "value": "#0055FF"
+            }
+
+        },
+        "warning": {
+            "base": {
+                "value": "#FF8C00"
+            },
+            "light": {
+                "value": "#FFD800"
+            },
+            "dark": {
+                "value": "#FFD600"
+            }
+        },
+        "danger": {
+            "base": {
+                "value": "#FF0000"
+            },
+            "light": {
+                "value": "#FF3333"
+            },
+            "dark": {
+                "value": "#FF0000"
+            }
+        },
+
+        "success": {
+            "base": {
+                "value": "#00FF00"
+            },
+            "light": {
+                "value": "#00FF00"
+            },
+            "dark": {
+                "value": "#00FF00"
+            }
+        }
+    }
+}
